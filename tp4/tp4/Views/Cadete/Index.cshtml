@@ -1,0 +1,34 @@
+﻿
+
+@model List<Cadete>
+
+<h2>Lista de Cadetes</h2>
+
+<a asp-controller="Cadete" asp-action="Alta" class="btn btn-primary btn-sm"> Crear nuevo Cadete</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var cadete in Model)
+        {
+            <tr>
+                <td>@cadete.getID()</td>
+                <td>@cadete.getNombre()</td>
+                <td>@cadete.getDireccion()</td>
+                <td>@cadete.getTelefono()</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Cadete/Alta?id=@cadete.getID()">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="/Cadete/Baja?id=@cadete.getID()">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
